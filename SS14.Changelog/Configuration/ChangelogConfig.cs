@@ -26,7 +26,11 @@ namespace SS14.Changelog.Configuration
         /// </summary>
         public string? CommitAuthorEmail { get; set; }
 
-        public string? SshKey { get; set; }
+        /// <summary>
+        /// GitHub Personal Access Token for HTTPS authentication.
+        /// </summary>
+        public string? GitHubToken { get; set; }
+
         public string? GitHubSecret { get; set; }
         public int DelaySeconds { get; set; } = 60;
 
