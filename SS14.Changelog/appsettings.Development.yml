@@ -21,6 +21,7 @@ Serilog:
 #Changelog:
 #  GitHubSecret: "foobar"
 #  ChangelogBranchName: "changelog-test"
-#  SshKey: 'C:\Users\Pieter-Jan Briers\.ssh\pjbot'
+#  GitHubToken: 'your_github_personal_access_token_here'
 #  ChangelogRepo: 'C:\Users\Pieter-Jan Briers\Projects\ss14-changelog'
+#  ChangelogRepoRemote: 'https://github.com/space-wizards/space-station-14.git'
 #  DelaySeconds: 5

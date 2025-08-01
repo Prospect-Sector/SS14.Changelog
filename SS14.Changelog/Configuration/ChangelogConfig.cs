@@ -9,10 +9,11 @@ namespace SS14.Changelog.Configuration
         public string ChangelogFilename { get; set; } = "Changelog.yml";
 
         /// <summary>
-        /// Git remote address (e.g. <c>git@github.com:space-wizards/space-station-14.git</c>).
+        /// Git remote address (e.g. <c>https://github.com/space-wizards/space-station-14.git</c>).
         /// </summary>
         /// <remarks>
         /// This is used when cloning the repo for the first time.
+        /// Now uses HTTPS instead of SSH for authentication.
         /// </remarks>
         public string? ChangelogRepoRemote { get; set; } = "";
 
@@ -26,7 +27,11 @@ namespace SS14.Changelog.Configuration
         /// </summary>
         public string? CommitAuthorEmail { get; set; }
 
-        public string? SshKey { get; set; }
+        /// <summary>
+        /// GitHub Personal Access Token for HTTPS authentication.
+        /// </summary>
+        public string? GitHubToken { get; set; }
+
         public string? GitHubSecret { get; set; }
         public int DelaySeconds { get; set; } = 60;
 

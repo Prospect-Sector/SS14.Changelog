@@ -28,6 +28,3 @@ COPY --from=build /src/SS14.Changelog/appsettings*.yml ./
 ENTRYPOINT ["dotnet", "SS14.Changelog.dll"]
 VOLUME /repo
 ENV Changelog__ChangelogRepo=/repo
-ENV Changelog__SshKey=/key
-RUN mkdir ~/.ssh && chmod 700 ~/.ssh
-COPY "Publish/github_known_hosts" /home/app/.ssh/known_hosts

@@ -252,12 +252,15 @@ namespace SS14.Changelog.Services
 
         private ProcessStartInfo GitNetCommand(ProcessStartInfo info)
         {
-            if (_cfg.Value.SshKey is { } key)
+            // Set up HTTPS authentication using GitHub token instead of SSH
+            if (_cfg.Value.GitHubToken is { } token)
             {
-                info.EnvironmentVariables.Add("GIT_SSH_COMMAND", $"ssh -i \"{key}\"");
+                // Use token-based authentication for HTTPS
+                info.ArgumentList.Insert(0, "-c");
+                info.ArgumentList.Insert(1, $"credential.helper=!f() {{ echo username={token}; echo password=; }}; f");
             }
             
-            // Not sure if necessary but git has been hanging which is very annoying.
+            // Disable terminal prompts to prevent hanging
             info.EnvironmentVariables.Add("GIT_TERMINAL_PROMPT", "0");
 
             return info;
