@@ -9,11 +9,10 @@ namespace SS14.Changelog.Configuration
         public string ChangelogFilename { get; set; } = "Changelog.yml";
 
         /// <summary>
-        /// Git remote address (e.g. <c>https://github.com/space-wizards/space-station-14.git</c>).
+        /// Git remote address (e.g. <c>git@github.com:space-wizards/space-station-14.git</c>).
         /// </summary>
         /// <remarks>
         /// This is used when cloning the repo for the first time.
-        /// Now uses HTTPS instead of SSH for authentication.
         /// </remarks>
         public string? ChangelogRepoRemote { get; set; } = "";
 
