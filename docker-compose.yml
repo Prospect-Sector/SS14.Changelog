@@ -1,0 +1,28 @@
+services:
+  ps-ss14-changelog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: PS-SS14-Changelog
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
+    labels:
+      com.docker.compose.project: docker
+      traefik.enable: "true"
+      traefik.http.routers.ss14-changelog.tls.certresolver: dns1
+      traefik.http.routers.ss14-changelog.rule: Host(`ss14-changelog.prospect-sector.space`)
+      traefik.http.routers.ss14-changelog.entrypoints: https
+      traefik.http.routers.ss14-changelog.tls: "true"
+      traefik.http.routers.ss14-changelog.middlewares: secure-headers
+      traefik.http.services.ss14-changelog.loadbalancer.server.port: "8080"
+      traefik.docker.network: traefik_lan
+    networks:
+      - default
+      - traefik_lan
+
+networks:
+  traefik_lan:
+    external: true
