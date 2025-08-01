@@ -23,6 +23,8 @@ RUN dotnet publish "SS14.Changelog.csproj" -c $BUILD_CONFIGURATION -o /app/publi
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+# Copy appsettings files to the app directory
+COPY --from=build /src/SS14.Changelog/appsettings*.yml ./
 ENTRYPOINT ["dotnet", "SS14.Changelog.dll"]
 VOLUME /repo
 ENV Changelog__ChangelogRepo=/repo
